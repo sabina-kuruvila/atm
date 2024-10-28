@@ -1,0 +1,27 @@
+{% extends "atm/atm_menu.html" %}
+
+{% block title %}Deposit{% endblock %}
+ 
+        {% block header %}  
+        {{message}}
+        {% endblock %}
+        {% block content %}
+         <!-- Deposit Form -->
+        <form action="{% url 'deposit' %}" method="POST" class="atm-form">
+            {% csrf_token %}
+            <label for="deposit_amount">Deposit Amount:</label>
+            <input type="number" id="deposit_amount" name="deposit_amount" placeholder="Enter deposit amount" required class="atm-input">
+            <input type="submit" class="atm-btn" value="Deposit">
+        </form>
+
+          <!-- Back to Menu -->
+          <a href="{% url 'atm_menu' %}" class="atm-btn" style="display: block; text-align: center;margin-top: 20px;">Back to Menu</a>
+
+        <!-- Display ATM Information -->
+        <div class="atm-info">
+        <p>Deposit Range: ₹{{ atm.deposit_min }} - ₹{{ atm.deposit_max }}</p>
+        <p>Current Balance: ₹{{ atm.balance }}</p>
+        </div>
+{% endblock %}
+ 
+

@@ -1,0 +1,17 @@
+{% extends "atm/atm_menu.html" %}
+
+{% block title %}Check Balance{% endblock %}
+
+{% block header %}
+{{message}}
+{% endblock %}
+
+{% block content %} 
+
+<!-- <form action="{% url 'atm_menu' %}" method="GET" style="display: block; text-align: center; margin-top: 20px;">
+    <input type="submit" class="atm-btn" value="Back to Menu">
+</form> -->
+<a href="{% url 'atm_menu' %}" class="atm-btn" style="display: block; text-align: center;">Back to Menu</a>
+ 
+
+{% endblock %}

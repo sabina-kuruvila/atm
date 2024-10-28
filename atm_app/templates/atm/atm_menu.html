@@ -1,0 +1,40 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ATM Sreen Display{% endblock %}</title>
+
+    {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'atm_app/css/styles.css' %}">
+    {% endblock %}
+
+</head>
+<body>
+<div class="atm-container">
+    <!-- ATM Screen to Display Messages -->
+    <div class="atm-screen">
+        <div style="align-content: center; padding-top: 50px;">  
+            {% block header %}
+            {{message}}
+            {% endblock header %} 
+        </div>
+    </div>
+    {% block content %}
+
+    <!-- ATM Form for Actions -->
+    <form method="POST" class="atm-form" autocomplete="off">
+        {% csrf_token %}
+
+        <!-- Action Buttons -->
+        <button type="submit" name="action" value="Balance" class="atm-btn">Check Balance</button>
+        <button type="submit" name="action" value="Withdraw" class="atm-btn">Withdraw</button>
+        <button type="submit" name="action" value="Deposit" class="atm-btn">Deposit</button>
+        <button type="submit" name="action" value="Exit" class="atm-btn">Exit</button>
+    </form>
+    {% endblock %}
+
+</div>
+</body>
+</html>

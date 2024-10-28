@@ -1,0 +1,32 @@
+{% extends "atm/atm_menu.html" %}
+
+{% block title %}Withdrawal{% endblock %}
+
+         {% block header %}
+         {{message}}
+         
+         {% endblock %}
+         {% block content %} 
+         <!-- ATM Form for Actions -->
+         <form method="POST" action="{% url 'withdrawal' %}" class="atm-form">
+            {% csrf_token %}
+      
+            <!-- Action Buttons -->
+            <label for="amount">Withdrawal Amount:</label>
+            <input type="number" class="atm-input" id="amount" name="amount" placeholder="Enter withdrawal amount" required>
+            <input type="submit" class="atm-btn" value="Withdraw">
+         </form>
+          <!-- Back to Menu -->
+          <a href="{% url 'atm_menu' %}" class="atm-btn" style="display: block; text-align: center;margin-top: 20px;">Back to Menu</a>    
+         <!-- 
+         <button class="atm-btn" style="display: block; text-align: center; margin-top: 20px;" onclick="window.location.href='{% url 'atm_menu' %}'">
+               Back to Menu
+         </button> -->
+
+         
+         <!-- Display ATM Information -->
+         <div class="atm-info">
+            <p>Withdrawal Range: ₹{{ atm.withdrawal_min }} - ₹{{ atm.withdrawal_max }}</p>
+            <p>Current Balance: ₹{{ atm.balance }}</p>
+         </div>
+      {% endblock %}
